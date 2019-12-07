@@ -3,29 +3,29 @@
 basedir="$(dirname "$0")"
 
 cmd_image() {
-  docker build -t gago:latest .
+  docker build -t "$USER:latest" .
 }
 
 cmd_stop() {
-  docker rm 'gago' -f || true
+  docker rm "$USER" -f || true
 }
 
 cmd_run() {
-  docker run -it --rm --name 'gago' \
-  -v "$PWD/..:/opt/gago" \
-  -w '/opt/gago' \
+  docker run -it --rm --name "$USER" \
+  -v "$PWD/..:/opt/$USER" \
+  -w "/opt/$USER" \
   -p 8085:8085 \
-  'gago:latest' "/opt/gago/environment/entrypoint/jupyter.sh"
+  "$USER:latest" "/opt/$USER/environment/entrypoint/jupyter.sh"
 }
 
 cmd_exec() {
-  docker exec -it 'gago' "$@"
+  docker exec -it "$USER" "$@"
 }
 
 cmd_entrypoint() {
   _entrypoint=${1?'command'}
   shift
-  cmd_exec "/opt/gago/environment/entrypoint/$_entrypoint.sh" "$@"
+  cmd_exec "/opt/$USER/environment/entrypoint/$_entrypoint.sh" "$@"
 }
 
 _cmd=${1?'command'}
