@@ -15,7 +15,8 @@ ENV PATH "$JAVA_HOME/bin:$PATH"
 RUN conda update -n base -c defaults conda
 RUN conda create -n env python=3.8
 RUN conda install --yes -c anaconda jupyter pandas numpy scikit-learn statsmodels seaborn nltk joblib tensorflow
-RUN conda install --yes -c conda-forge matplotlib holoviews imbalanced-learn wordcloud mlxtend folium pyldavis pulp jupyterthemes scrapy pyspark rise
+RUN conda install --yes -c conda-forge matplotlib holoviews imbalanced-learn wordcloud mlxtend folium pyldavis jupyterthemes scrapy pyspark rise
+RUN conda install --yes -c gurobi gurobi
 RUN conda install --yes -c bokeh bokeh
 
 RUN echo "source activate env" > ~/.bashrc
