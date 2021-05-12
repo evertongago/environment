@@ -19,6 +19,7 @@ RUN conda install --yes -c gurobi gurobi
 RUN conda install --yes -c bokeh bokeh
 
 RUN echo "source activate base" > ~/.bashrc
+ENV PYSPARK_SUBMIT_ARGS "--packages io.delta:delta-core_2.12:0.8.0 --conf spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension --conf spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog pyspark-shell"
 ENV PATH /opt/conda/bin:$PATH
 RUN jupyter-nbextension install rise --py --sys-prefix
 RUN jt -t grade3
