@@ -14,7 +14,7 @@ ENV PATH "$JAVA_HOME/bin:$PATH"
 # Python and Dependencies
 RUN conda update -n base -c defaults conda
 RUN conda install --yes -c anaconda jupyter pandas numpy scikit-learn statsmodels seaborn nltk joblib tensorflow
-RUN conda install --yes -c conda-forge matplotlib holoviews imbalanced-learn wordcloud mlxtend folium pyldavis jupyterthemes scrapy pyspark rise
+RUN conda install --yes -c conda-forge matplotlib holoviews imbalanced-learn wordcloud mlxtend folium pyldavis jupyterthemes scrapy pyspark mlflow rise
 RUN conda install --yes -c gurobi gurobi
 RUN conda install --yes -c bokeh bokeh
 
