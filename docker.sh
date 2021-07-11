@@ -15,6 +15,7 @@ cmd_run() {
   -v "$PWD/..:/opt/$USER" \
   -w "/opt/$USER" \
   -p 8085:8085 \
+  -p 5000:5000 \
   "$USER:latest" "/opt/$USER/environment/entrypoint/jupyter.sh"
 }
 
